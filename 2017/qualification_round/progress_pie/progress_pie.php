@@ -1,6 +1,9 @@
 <?php
 /**
  * Code written by Lorenzo Vainigli for Facebook Hacker Cup 2017 Qualification Round
+ *
+ * Problem: https://www.facebook.com/codingcompetitions/hacker-cup/2017/qualification-round/problems/A
+ *
  * This program was verified correct, source:
  * https://www.facebook.com/codingcompetitions/hacker-cup/2017/qualification-round/scoreboard?start=8880
 **/
