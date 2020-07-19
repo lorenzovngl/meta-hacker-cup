@@ -2,12 +2,12 @@
 Written by Lorenzo Vainigli
 
 This program provides a correct solution for the following problem:
-https://www.facebook.com/codingcompetitions/hacker-cup/2019/qualification-round/problems/A
+https://www.facebook.com/codingcompetitions/hacker-cup/2019/qualification-round/problems/B
 """
 
 import math
 
-filename = "leapfrog_ch1"
+filename = "leapfrog_ch2"
 DEBUG = 0
 
 if DEBUG:
@@ -23,13 +23,31 @@ out_data = []
 
 def solve(row):
     row = row[0]
-    # A can reach the final point if we have a number of B that is at least equal to the half of the number of lilypads,
-    # but this number also need to be less than the length of the lilypads minus 2 in order to leave free the first
-    # spot (A) and the last spot. If this condition is satisfied, any combination of Bs in the spots is right.
-    if math.floor(len(row)/2) <= row.count('B') <= len(row) - 2:
-        return "Y"
+    """
+    Because A can leap left or right, only 2 B are sufficient to bring A the the last lilypad and it can be done using
+    this set of moves:
+        AB.B..
+        .BAB..
+        .B.BA.
+        ..BBA.
+        .ABB..
+        .AB.B.
+        ..BAB.
+        ..B.BA
+    but this number also need to be less than the length of the lilypads minus 2 in order to leave free the first
+    spot (A) and the last spot.
+    """
+    if len(row) <= 3:
+        # If there are 3 spots or less we follow the solution of leapfrog_ch1
+        if math.floor(len(row)/2) <= row.count('B') <= len(row) - 2:
+            return "Y"
+        else:
+            return "N"
     else:
-        return "N"
+        if 2 <= row.count('B') <= len(row) - 2:
+            return "Y"
+        else:
+            return "N"
 
 
 with open(input_filename, 'r') as fileinput:

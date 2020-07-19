@@ -23,9 +23,11 @@ out_data = []
 
 def solve(row):
     row = row[0]
-    # A can reach the final point if we have a number of B that is at least equal to the half of the number of lilypads,
-    # but this number also need to be less than the length of the lilypads minus 2 in order to leave free the first
-    # spot (A) and the last spot. If this condition is satisfied, any combination of Bs in the spots is right.
+    """
+    A can reach the final point if we have a number of B that is at least equal to the half of the number of lilypads,
+    but this number also need to be less than the length of the lilypads minus 2 in order to leave free the first
+    spot (A) and the last spot. If this condition is satisfied, any combination of Bs in the spots is right.
+    """
     if math.floor(len(row)/2) <= row.count('B') <= len(row) - 2:
         return "Y"
     else:
