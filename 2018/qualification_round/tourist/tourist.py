@@ -1,8 +1,10 @@
 """
 Written by Lorenzo Vainigli
 
-This program provides a correct solution for the following problem:
+This program refers to the following problem:
 https://www.facebook.com/codingcompetitions/hacker-cup/2018/qualification-round/problems/A
+
+This solution works for sample input, but it's still incorrect.
 """
 
 from functools import cmp_to_key
