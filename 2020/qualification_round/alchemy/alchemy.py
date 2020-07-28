@@ -1,6 +1,13 @@
+"""
+Written by Lorenzo Vainigli for the Facebook Hacker Cup 2020 Qualification Round
+
+This program provides a correct solution for the following problem:
+https://www.facebook.com/codingcompetitions/hacker-cup/2020/qualification-round/problems/B
+"""
+
 import time
 
-filename = "template"
+filename = "alchemy"
 DEBUG = False
 BIGINPUT = False
 VALIDATION = False
@@ -27,7 +34,7 @@ def execution_time(start_time):
     diff = diff - min*60
     sec = int(diff)
     diff = diff - sec
-    ms = int(diff*1000)
+    ms = round(diff*1000, 3)
     if min > 0:
         return "Execution time: {} min, {} sec, {} ms.".format(min, sec, ms)
     elif sec > 0:
@@ -36,8 +43,17 @@ def execution_time(start_time):
         return "Execution time: {} ms.".format(ms)
 
 
-def solve(data):
-    return 1
+def solve(N, C):
+    # For a given sequence C is possible to forge the Philosopher's Stone only if C contains a number of As and a number
+    # of Bs such that the difference between them is exactly 1. This is due to the fact that any reduction leads to
+    # remove one A and one B, so if the difference is greater than 1 we finish to have AAA or BBB, otherwise we have
+    # two As and one B or two Bs and one A.
+    na = C.count('A')
+    nb = C.count('B')
+    if abs(na-nb) == 1:
+        return 'Y'
+    else:
+        return 'N'
 
 
 in_data = []
@@ -56,8 +72,8 @@ while i < len(in_data):
     print("Case " + str(case))
     N = int(in_data[i][0])
     i = i + 1
-    out_data.append("Case #" + str(case) + ": " + str(solve(in_data[i:i+N])))
-    i = i + N
+    out_data.append("Case #" + str(case) + ": " + str(solve(N, in_data[i][0])))
+    i = i + 1
     case = case + 1
 
 with open(output_filename, 'w') as fileoutput:
